@@ -18,7 +18,7 @@ In this project:
 - Write code to call API and request data about Vietnam weather from openweathermap.org (request, pandas, numpy)
 - Explore and preprocess data: check null, check duplicate, check data distribution, reformat data for modeling (pandas, numpy, matplotlib, seaborn)
 - Build LogisticRegression Classifier and Naive Bayes Classifier to try to predict the weather after 12h from the current time
-![img](/images/Explore_Predict_Vietnam%20weather.png)
+![img](images/Explore_Predict_Vietnam%20weather.png)
 
 
 
