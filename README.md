@@ -17,8 +17,21 @@ In this project:
 In this project:
 - Write code to call API and request data about Vietnam weather from openweathermap.org (request, pandas, numpy)
 - Explore and preprocess data: check null, check duplicate, check data distribution, reformat data for modeling (pandas, numpy, matplotlib, seaborn)
-- Build LogisticRegression Classifier and Naive Bayes Classifier to try to predict the weather after 12h from the current time
+- Build LogisticRegression Classifier and Naive Bayes Classifier to try to predict the weather after 12h from the current time (pandas, Sklearn)
+
 ![img](images/Explore_Predict_Vietnam%20weather.png)
+
+
+# Project: [Sentiment_analysis](https://github.com/TranPhu1999/Sentiment_analysis)
+In this project:
+- Crawl Airpod review data from Amazon (Selenium)
+- Manualy label review sentence as Positive and Negative, remove spelling mistake, typos,... (pandas)
+- Using TF-IDF, BERT and fastText to create embeddings for each sentences
+- Store data on MongoDB cloud
+- Connect to MongoDB, extract data and use logistic regression and Support Vector Machine to build classification model
+
+![img](/images/Sentiment_analysis_project.png)
+
 
 
 
