@@ -9,4 +9,4 @@ In this project, I:
 - Build a simple web interface that Upload image from user then send it to Flask API, receive and display the output (HTML, CSS, JavaSript)
 
 |![Input](images/maksssksksss0.png) | ![Output](images/download.png)|
-![Input](images/image.png)
+
