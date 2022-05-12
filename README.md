@@ -7,8 +7,8 @@ In this project, I:
 - Train a Yolov3 model to detect Face mask wearing (Tensorflow, OpenCV, Numpy)
 - Build a Flask API that receive image and send image result to a web interface (flask)
 - Build a web interface that Upload image from user then send it to Flask API, receive and display the output (HTML, CSS, JavaSript)
-|Input|Output|
-|![Image](https://github.com/TranPhu1999/TranDucPhu_porfolio/blob/main/images/maksssksksss0.png) | ![Image](https://github.com/TranPhu1999/TranDucPhu_porfolio/blob/main/images/download.png)|
+
+|![Input](images/maksssksksss0.png) | ![Output](images/download.png)|
 
 ```markdown
 Syntax highlighted code block
