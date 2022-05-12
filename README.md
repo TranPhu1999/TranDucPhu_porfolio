@@ -1,12 +1,12 @@
-## Welcome to GitHub Pages
+## "I, a universe of atoms, an atom in the universe" Richard Feynman
 
-You can use the [editor on GitHub](https://github.com/TranPhu1999/TranDucPhu_porfolio/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+When I was young, I sometimes look into the sky and ask myself. As a speck of dust in this vast universe, will my existence have any meaning? Will my action can make any change in this world? After a long time of self-exploring, self-explanation, reading, and listening, I think I have found some answers to those questions. Throughout history, humans have changed the course of nature by using 2 things: the ability to work together and the ability to use tools. And that is what I believe. By working together with other people as a Company and with the right tool, which is Data in our era, I will be on the right path to change myself and change a small part of this world.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+# Project: [YOLO_face_mask_detection](https://github.com/TranPhu1999/YOLO_face_mask_detection)
+In this project, I:
+- Train a Yolov3 model to detect Face mask wearing (Tensorflow, OpenCV, Numpy)
+- Build a Flask API that receive image and send image result to a web interface (flask)
+- Build a web interface that Upload image from user then send it to Flask API, receive and display the output (HTML, CSS, JavaSript)
 
 ```markdown
 Syntax highlighted code block
