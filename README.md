@@ -2,6 +2,11 @@
 
 When I was young, I sometimes look into the sky and ask myself. As a speck of dust in this vast universe, will my existence have any meaning? Will my action can make any change in this world? After a long time of self-exploring, self-explanation, reading, and listening, I think I have found some answers to those questions. Throughout history, humans have changed the course of nature by using 2 things: the ability to work together and the ability to use tools. By working together with other people as a Company and with the right tool, which is Data in our era, I will be on the right path to change myself and change a small part of this world. And that is what I believe.
 
+# Contact:
+<img align="center" src="images/github_PNG28.png" alt="drawing" style="width:40px;"/> <a href="https://github.com/TranPhu1999">github.com/TranPhu1999</a> <img align="center" src="images/linkIn_icon.jpg" alt="drawing" style="width:40px;"/> <a href="https://www.linkedin.com/in/tran-duc-phu-505841192/">www.linkedin.com/in/tran-duc-phu-505841192/</a> <img align="center" src="https://github.com/TranPhu1999/TranDucPhu_porfolio/blob/main/images/Gmail_logo.png" alt="drawing" style="width:40px;"/><a>phu1091999@gmail.com</a>
+
+
+
 # Project: [YOLO_face_mask_detection](https://github.com/TranPhu1999/YOLO_face_mask_detection)
 In this project: Tensorflow, OpenCV, Numpy, flask, HTML, CSS, JavaSript
 - Train a Yolov3 model to detect Face mask wearing with Kaggle Face Mask Dataset
