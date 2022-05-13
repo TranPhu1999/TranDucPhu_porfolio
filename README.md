@@ -3,7 +3,7 @@
 When I was young, I sometimes look into the sky and ask myself. As a speck of dust in this vast universe, will my existence have any meaning? Will my action can make any change in this world? After a long time of self-exploring, self-explanation, reading, and listening, I think I have found some answers to those questions. Throughout history, humans have changed the course of nature by using 2 things: the ability to work together and the ability to use tools. By working together with other people as a Company and with the right tool, which is Data in our era, I will be on the right path to change myself and change a small part of this world. And that is what I believe.
 
 # Contact:
-<img src="images/github_PNG28.png" alt="drawing" style="width:40px;"/> [Github](https://github.com/TranPhu1999) <img src="images/linkIn_icon.jpg" alt="drawing" style="width:40px;"/> [LinkedIn](https://www.linkedin.com/in/tran-duc-phu-505841192/)
+<img src="images/github_PNG28.png" alt="drawing" style="width:40px;"/> [Github](https://github.com/TranPhu1999) <img align="center" src="images/linkIn_icon.jpg" alt="drawing" style="width:40px;"/> [LinkedIn](https://www.linkedin.com/in/tran-duc-phu-505841192/)
 
 
 
