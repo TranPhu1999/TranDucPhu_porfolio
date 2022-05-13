@@ -1,11 +1,15 @@
 ## "I, a universe of atoms, an atom in the universe" Richard Feynman
 
-im {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
+<head>
+  <style>
+    im {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  </style>
+</head>
 
 <div style="clear: both;">
   <im style="float: left; margin-right 1em;">
