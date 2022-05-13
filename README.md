@@ -7,6 +7,7 @@ When I was young, I sometimes look into the sky and ask myself. As a speck of du
 <img src="images/linkIn_icon.jpg" alt="drawing" style="width:40px;"/> [LinkedIn](https://www.linkedin.com/in/tran-duc-phu-505841192/)
 
 
+
 # Project: [YOLO_face_mask_detection](https://github.com/TranPhu1999/YOLO_face_mask_detection)
 In this project: Tensorflow, OpenCV, Numpy, flask, HTML, CSS, JavaSript
 - Train a Yolov3 model to detect Face mask wearing with Kaggle Face Mask Dataset
