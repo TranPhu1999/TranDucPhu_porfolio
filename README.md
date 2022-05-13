@@ -21,6 +21,10 @@ In this project: request, pandas, numpy,  matplotlib, seaborn, Sklearn
 
 ![img](images/Explore_Predict_Vietnam%20weather.png)
 
+<img src="images/github_PNG28.png" alt="drawing" style="width:200px;"/>
+# Contact me:
+- |![Input](images/linkIn_icon.jpg) |linkedIn(https://www.linkedin.com/in/tran-duc-phu-505841192/)|
+- |![Input](images/github_PNG28.png) |linkedIn(https://github.com/TranPhu1999?tab=repositories)|
 
 # Project: [Sentiment_analysis](https://github.com/TranPhu1999/Sentiment_analysis)
 In this project: Selenium, pandas, Sklearn, pymongo, embedding methods
