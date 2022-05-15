@@ -1,4 +1,4 @@
-## "I, a universe of atoms, an atom in the universe" Richard Feynman
+## I know that I don't know anything
 <html>
 <head>
   <style>
@@ -16,7 +16,8 @@
     <img src="images/avatar.png" alt="">
   </im>
   <div>
-    <p>When I was young, I sometimes look into the sky and ask myself. As a speck of dust in this vast universe, will my existence have any meaning? Will my action can make any change in this world? After a long time of self-exploring, self-explanation, reading, and listening, I think I have found some answers to those questions. Throughout history, humans have changed the course of nature by using 2 things: the ability to work together and the ability to use tools. By working together with other people as a Company and with the right tool, which is Data in our era, I will be on the right path to change myself and change a small part of this world. And that is what I believe.</p>
+    <p>Hi, I'm Tran Duc Phu, a Graduated Student of the Ho Chi Minh University of Science majoring in computer science. I may have very little working experience in this industry, just about 1.5 years but I'm always curious and eager to learn new things. Especially in the field of data analysis and data science. I'm fascinated with all the things that we can do when we have those data in our hands. 
+My favorite Albert Einstein quotes is "I am neither clever nor especially gifted. I'm just very, very curious"</p>
   </div>
 </div>
 </body>
