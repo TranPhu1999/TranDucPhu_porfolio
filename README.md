@@ -29,7 +29,7 @@
 
 <b> FPT Telecom: Data Analyst Intern</b>
 - Working with the advertising team and data engineer team to write SQL/ClickHouse queries to get data, then make visualization and reports from those datasets.
-- 
+
 <b> FADO (CROSS-BORDER E-COMMERCE): Data scientist intern</b>
 - Working with 5 other members of the data science team to research and implement technologies for Recommendation System, Customer Data Platform
 - Label data, write image augmentation function and train machine learning model for ID card information extraction
