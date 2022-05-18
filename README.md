@@ -22,6 +22,8 @@
 </body>
 </html>
 
+#### Contact:<img align="center" src="images/github_PNG28.png" alt="drawing" style="width:40px;"/> <a href="https://github.com/TranPhu1999">Github</a> <img align="center" src="images/linkIn_icon.jpg" alt="drawing" style="width:40px;"/> <a href="https://www.linkedin.com/in/tran-duc-phu-505841192/">LinkedIn</a> <img align="center" src="images/Gmail_logo.png" alt="drawing" style="width:40px;"/><a>phu1091999@gmail.com</a>
+
 #### EXPERIENCE: 
 6 month of Data Analyst, 6 month of Data Scientist
 - FPT Telecom: Data Analyst Intern
@@ -36,10 +38,6 @@
 + Spark, MongoDB, Python, Library(Selenium, Numpy, Pandas, Matplotlib, Plotly, Scikit-learn, Tensorflow)
 + Familiar with tools like Redash, PowerBI, Github, Docker,...
 + Have a basic knowledge of Google Cloud Services, Recommendation System, Clustering, Dimension Reduction, ETL
-
-
-#### Contact:<img align="center" src="images/github_PNG28.png" alt="drawing" style="width:40px;"/> <a href="https://github.com/TranPhu1999">Github</a> <img align="center" src="images/linkIn_icon.jpg" alt="drawing" style="width:40px;"/> <a href="https://www.linkedin.com/in/tran-duc-phu-505841192/">LinkedIn</a> <img align="center" src="images/Gmail_logo.png" alt="drawing" style="width:40px;"/><a>phu1091999@gmail.com</a>
-
 
 
 # Project: [YOLO_face_mask_detection](https://github.com/TranPhu1999/YOLO_face_mask_detection)
