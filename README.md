@@ -16,31 +16,29 @@
     <img src="images/avatar.png" alt="">
   </im>
   <div>
-    <p>Hi, I'm Tran Duc Phu, a Graduated Student of the Ho Chi Minh University of Science majoring in computer science. I may have very little working experience in this industry, just about 1.5 years but I'm always curious and eager to learn new things. Especially in the field of data analysis and data science. I'm fascinated with all the things that we can do when we have those data in our hands.<br>Like Albert Einstein used to say "I am neither clever nor especially gifted. I'm just very, very curious"</p>
-    
-    
-    EXPERIENCE: 
-    6 month of Data Analyst, 6 month of Data Scientist
-    - FPT Telecom: Data Analyst Intern
-    + Working with the advertising team and data engineer team to write SQL/ClickHouse queries to get data, then make visualization and reports from those datasets.
-    - FADO (CROSS-BORDER E-COMMERCE): Data scientist intern
-    + Working with 5 other members of the data science team to research and implement technologies for Recommendation System, Customer Data Platform
-    + Label data, write image augmentation function and train machine learning model for ID card information extraction
-
-    SKILLS:
-    - Programming Language: Python, C/C++, SQL, ClickHouse, HTML, CSS, Javascript
-    - Data Science Knowledge:
-    + Spark, MongoDB, Python, Library(Selenium, Numpy, Pandas, Matplotlib, Plotly, Scikit-learn, Tensorflow)
-    + Familiar with tools like Redash, PowerBI, Github, Docker,...
-    + Have a basic knowledge of Google Cloud Services, Recommendation System, Clustering, Dimension Reduction, ETL
+    <p>Hi, I'm Tran Duc Phu, a Graduated Student of the Ho Chi Minh University of Science majoring in computer science. I may have very little working experience in this industry, just about 1.5 years but I'm always curious and eager to learn new things. Especially in the field of data analysis and data science. I'm fascinated with all the things that we can do when we have those data in our hands.<br>Like Albert Einstein used to say "I am neither clever nor especially gifted. I'm just very, very curious"</p> 
   </div>
 </div>
 </body>
 </html>
 
+#### EXPERIENCE: 
+6 month of Data Analyst, 6 month of Data Scientist
+- FPT Telecom: Data Analyst Intern
++ Working with the advertising team and data engineer team to write SQL/ClickHouse queries to get data, then make visualization and reports from those datasets.
+- FADO (CROSS-BORDER E-COMMERCE): Data scientist intern
++ Working with 5 other members of the data science team to research and implement technologies for Recommendation System, Customer Data Platform
++ Label data, write image augmentation function and train machine learning model for ID card information extraction
+
+#### SKILLS:
+- Programming Language: Python, C/C++, SQL, ClickHouse, HTML, CSS, Javascript
+- Data Science Knowledge:
++ Spark, MongoDB, Python, Library(Selenium, Numpy, Pandas, Matplotlib, Plotly, Scikit-learn, Tensorflow)
++ Familiar with tools like Redash, PowerBI, Github, Docker,...
++ Have a basic knowledge of Google Cloud Services, Recommendation System, Clustering, Dimension Reduction, ETL
 
 
-### Contact:<img align="center" src="images/github_PNG28.png" alt="drawing" style="width:40px;"/> <a href="https://github.com/TranPhu1999">Github</a> <img align="center" src="images/linkIn_icon.jpg" alt="drawing" style="width:40px;"/> <a href="https://www.linkedin.com/in/tran-duc-phu-505841192/">LinkedIn</a> <img align="center" src="images/Gmail_logo.png" alt="drawing" style="width:40px;"/><a>phu1091999@gmail.com</a>
+#### Contact:<img align="center" src="images/github_PNG28.png" alt="drawing" style="width:40px;"/> <a href="https://github.com/TranPhu1999">Github</a> <img align="center" src="images/linkIn_icon.jpg" alt="drawing" style="width:40px;"/> <a href="https://www.linkedin.com/in/tran-duc-phu-505841192/">LinkedIn</a> <img align="center" src="images/Gmail_logo.png" alt="drawing" style="width:40px;"/><a>phu1091999@gmail.com</a>
 
 
 
