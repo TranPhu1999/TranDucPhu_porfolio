@@ -26,6 +26,7 @@
 
 #### EXPERIENCE: 
 6 month of Data Analyst, 6 month of Data Scientist
+
 <b> FPT Telecom: Data Analyst Intern</b>
 - Working with the advertising team and data engineer team to write SQL/ClickHouse queries to get data, then make visualization and reports from those datasets.
 <b> FADO (CROSS-BORDER E-COMMERCE): Data scientist intern</b>
