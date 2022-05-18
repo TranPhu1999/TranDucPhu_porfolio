@@ -17,7 +17,8 @@
   </im>
   <div>
     <p>Hi, I'm Tran Duc Phu, a Graduated Student of the Ho Chi Minh University of Science majoring in computer science. I may have very little working experience in this industry, just about 1.5 years but I'm always curious and eager to learn new things. Especially in the field of data analysis and data science. I'm fascinated with all the things that we can do when we have those data in our hands.<br>Like Albert Einstein used to say "I am neither clever nor especially gifted. I'm just very, very curious"</p>
-    EXPERIENCE: 6 month of Data Analyst, 6 month of Data Scientist
+    EXPERIENCE: 
+    6 month of Data Analyst, 6 month of Data Scientist
     - FPT Telecom: Data Analyst Intern
     + Working with the advertising team and data engineer team to write SQL/ClickHouse queries to get data, then make visualization and reports from those datasets.
     - FADO (CROSS-BORDER E-COMMERCE): Data scientist intern
