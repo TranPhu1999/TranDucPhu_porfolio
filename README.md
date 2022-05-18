@@ -26,16 +26,16 @@
 
 #### EXPERIENCE: 
 6 month of Data Analyst, 6 month of Data Scientist
-** FPT Telecom: Data Analyst Intern
+<b> FPT Telecom: Data Analyst Intern</b>
 - Working with the advertising team and data engineer team to write SQL/ClickHouse queries to get data, then make visualization and reports from those datasets.
-** FADO (CROSS-BORDER E-COMMERCE): Data scientist intern
+<b> FADO (CROSS-BORDER E-COMMERCE): Data scientist intern</b>
 - Working with 5 other members of the data science team to research and implement technologies for Recommendation System, Customer Data Platform
 - Label data, write image augmentation function and train machine learning model for ID card information extraction
 
 #### SKILLS:
-** Programming Language: 
+<b> Programming Language: </b>
 - Python, C/C++, SQL, ClickHouse, HTML, CSS, Javascript
-** Data Science Knowledge:
+<b> Data Science Knowledge:</b>
 - Spark, MongoDB, Python, Library(Selenium, Numpy, Pandas, Matplotlib, Plotly, Scikit-learn, Tensorflow)
 - Familiar with tools like Redash, PowerBI, Github, Docker,...
 - Have a basic knowledge of Google Cloud Services, Recommendation System, Clustering, Dimension Reduction, ETL
