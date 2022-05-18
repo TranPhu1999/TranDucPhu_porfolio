@@ -24,7 +24,7 @@
 
 ## Contact:<img align="center" src="images/github_PNG28.png" alt="drawing" style="width:40px;"/> <a href="https://github.com/TranPhu1999">Github</a> <img align="center" src="images/linkIn_icon.jpg" alt="drawing" style="width:40px;"/> <a href="https://www.linkedin.com/in/tran-duc-phu-505841192/">LinkedIn</a> <img align="center" src="images/Gmail_logo.png" alt="drawing" style="width:40px;"/><a>phu1091999@gmail.com</a>
 
-## EXPERIENCE: 
+### EXPERIENCE: 
 6 month of Data Analyst, 6 month of Data Scientist
 
 <b> FPT Telecom: Data Analyst Intern</b>
@@ -34,7 +34,7 @@
 - Working with 5 other members of the data science team to research and implement technologies for Recommendation System, Customer Data Platform
 - Label data, write image augmentation function and train machine learning model for ID card information extraction
 
-#### SKILLS:
+### SKILLS:
 <b> Programming Language: </b>
 - Python, C/C++, SQL, ClickHouse, HTML, CSS, Javascript
 
