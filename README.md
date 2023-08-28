@@ -111,6 +111,42 @@
     ![img](images/SnakeGame.png)
 </section>
 
+nav {
+    background-color: #333;
+    color: white;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+nav li {
+    margin-right: 20px;
+}
+nav a {
+    text-decoration: none;
+    color: white;
+}
+section {
+    padding: 20px;
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("a").on('click', function(event) {
+            if (this.hash !== "") {
+                event.preventDefault();
+                var hash = this.hash;
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 800, function(){
+                    window.location.hash = hash;
+                });
+            }
+        });
+    });
+</script>
 
 
 
