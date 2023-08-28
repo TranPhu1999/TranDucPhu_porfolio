@@ -26,18 +26,18 @@
 
 # 2.5 YEARS OF EXPERIENCES
 
-<b> FPT Telecom: Data Analyst Intern</b>
+<b> FPT Telecom: Data Analyst Intern (1 year)</b>
 - Continuously working with Marketing team to get requests for what metrics and advertising campaigns need to be tracked across days, months, and quarters.
 - Assist Data Engineer team in writing SQL/ClickHouse queries and use Redash or PowerBI to build various dashboards and interactive visualizations for Marketing team to monitor FPT Play Advertising Campaigns.
 
-<b> FADO (CROSS-BORDER E-COMMERCE): Data scientist</b>
+<b> FADO (CROSS-BORDER E-COMMERCE): Data scientist (6 months)</b>
 - Working with 5 other members of the Data Science team to research and make presentations about frameworks and technologies for Recommendation System, Customer Data Platform, and eKYC.
 - Collect, label, clean raw data, and write image augmentation and preprocess functions using NumPy and OpenCV2
 - Train, evaluate, and deploy models into production.
 - Research and build a customer behavior prediction based on Fingerprint
 - Using various techniques: CNN, YOLOv5, VIETOCR to build a pipeline for extract information from customers citizen ID
 
-<b> GTechHCM: AI Engineer</b>
+<b> GTechHCM: AI Engineer (1 year)</b>
 - Utilizing OKR framework, collaborating with PM and BA to understand the customer requirements, and building on-premise projects
 - Build a Contents Understanding System that can assist various NLP and CV tasks like summarizing, translating, classifying topics, recognizing entities in documents; detecting, recognizing objects and finding similar objects in images.
 - Collecting and cleaning data, applying feature engineering and data transformation to enhance data quality or even creating synthetic data if necessary. 
