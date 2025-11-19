@@ -109,6 +109,22 @@
     background: url(../img/bg-header.png) left top no-repeat;
 }
 
+/* Avatar styling: fixed square, circular crop, responsive */
+.avatar {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+@media (max-width: 767.98px) {
+    .avatar {
+        width: 140px;
+        height: 140px;
+    }
+}
+
 .typed-cursor {
     font-size: 30px;
     color: var(--dark);
