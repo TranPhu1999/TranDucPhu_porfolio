@@ -1,10 +1,27 @@
 {
   "redirects": [
-    { "source": "/", "destination": "/me/", "permanent": false },
-    { "source": "/me", "destination": "/me/", "permanent": true }
+    {
+      "source": "/",
+      "destination": "/me/",
+      "permanent": false
+    },
+    {
+      "source": "/me",
+      "destination": "/me/",
+      "permanent": true
+    }
   ],
   "rewrites": [
-    { "source": "/me/", "destination": "/index.html" },
-    { "source": "/me/:path*", "destination": "/:path*" }
-  ]
+    {
+      "source": "/me/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/me/:path*",
+      "destination": "/:path*"
+    }
+  ],
+  "framework": null,
+  "buildCommand": "",
+  "outputDirectory": "."
 }
