@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notes on building LLM agents that don&#x27;t fall over — Tran Duc Phu</title>
+<meta name="description" content="Agents fail in boring, predictable ways: unbounded loops, malformed tool calls, and silent drift. A few patterns that make them sturdier, with a minimal Python loop.">
+<meta name="author" content="Tran Duc Phu">
+<link rel="canonical" href="https://meotomo.com/me/blog/llm-agents-that-dont-fall-over/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Notes on building LLM agents that don&#x27;t fall over — Tran Duc Phu">
+<meta property="og:description" content="Agents fail in boring, predictable ways: unbounded loops, malformed tool calls, and silent drift. A few patterns that make them sturdier, with a minimal Python loop.">
+<meta property="og:url" content="https://meotomo.com/me/blog/llm-agents-that-dont-fall-over/">
+<meta property="og:image" content="https://meotomo.com/me/assets/avatar.jpg">
+<meta property="og:site_name" content="Tran Duc Phu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Notes on building LLM agents that don&#x27;t fall over — Tran Duc Phu">
+<meta name="twitter:description" content="Agents fail in boring, predictable ways: unbounded loops, malformed tool calls, and silent drift. A few patterns that make them sturdier, with a minimal Python loop.">
+<meta name="twitter:image" content="https://meotomo.com/me/assets/avatar.jpg">
+<meta name="theme-color" content="#4f46e5">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="alternate" type="application/rss+xml" title="Tran Duc Phu — Blog" href="https://meotomo.com/me/blog/feed.xml">
+<script>(function(){try{var t=localStorage.getItem('theme');}catch(e){}if(!t)t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+<meta property="article:published_time" content="2026-10-16">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Notes on building LLM agents that don't fall over", "datePublished": "2026-10-16", "author": {"@type": "Person", "name": "Tran Duc Phu"}, "description": "Agents fail in boring, predictable ways: unbounded loops, malformed tool calls, and silent drift. A few patterns that make them sturdier, with a minimal Python loop.", "url": "https://meotomo.com/me/blog/llm-agents-that-dont-fall-over/"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <nav class="container nav-inner" aria-label="Main">
+    <a class="brand" href="../../"><img src="../../assets/favicon.svg" alt="" width="28" height="28">Tran Duc Phu</a>
+    <div style="display:flex;align-items:center">
+      <ul class="nav-links" id="nav-links"><li><a href="../../#home">Home</a></li><li><a href="../../#about">About</a></li><li><a href="../../#projects">Projects</a></li><li><a href="../../blog/" aria-current="page">Blog</a></li><li><a href="../../#contact">Contact</a></li></ul>
+      <button class="icon-btn theme-toggle" type="button" aria-label="Toggle theme"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+      <button class="icon-btn menu-btn" type="button" aria-label="Menu" aria-controls="nav-links" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </nav>
+</header>
+<main id="main">
+<div class="progress" aria-hidden="true"></div>
+<article>
+  <header class="container narrow article-head">
+    <a href="../" class="meta">← All posts</a>
+    <h1 style="margin-top:16px">Notes on building LLM agents that don&#x27;t fall over</h1>
+    <div class="meta"><time datetime="2026-10-16">Oct 16, 2026</time> · 4 min read</div>
+    <ul class="tags"><li><a class="tag" href="../../blog/?topic=AI">AI</a></li><li><a class="tag" href="../../blog/?topic=Tech">Tech</a></li></ul>
+    
+  </header>
+  <div class="container article-layout">
+    <div>
+      <div class="prose"><p>Every LLM agent demo looks magical for the first five minutes. Then someone asks it a question slightly outside the happy path, and it calls the same search tool eleven times, invents a function argument, and confidently answers a question nobody asked.</p>
+<p>Most agent failures I&rsquo;ve seen are not exotic. They are the same handful of boring problems, and boring problems have boring solutions. Here are the ones I keep coming back to.</p>
+<h2 id="1-bound-everything">1. Bound everything<a class="headerlink" href="#1-bound-everything" title="Permanent link">#</a></h2>
+<p>An agent is a <code>while</code> loop whose exit condition is decided by a probabilistic text generator. Read that sentence again and the first rule writes itself: <strong>never let the model be the only thing that decides when to stop.</strong></p>
+<p>Put hard limits on steps, wall-clock time, tokens and cost. When a limit trips, fail loudly with whatever partial state you have, rather than silently returning the last message.</p>
+<h2 id="2-treat-tool-calls-as-untrusted-input">2. Treat tool calls as untrusted input<a class="headerlink" href="#2-treat-tool-calls-as-untrusted-input" title="Permanent link">#</a></h2>
+<p>The model&rsquo;s tool call is user input wearing a nice suit. Validate it with a schema, and when validation fails, feed the error back to the model <em>as an observation</em> instead of crashing. Models are surprisingly good at fixing their own arguments when told exactly what was wrong.</p>
+<p>Here&rsquo;s the skeleton I start from. It&rsquo;s deliberately small — no framework — because the important ideas fit on one screen:</p>
+<div class="hl"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Search</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">query</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">TOOLS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"search"</span><span class="p">:</span> <span class="p">(</span><span class="n">Search</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">search_index</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">query</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">top_k</span><span class="p">))}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run_agent</span><span class="p">(</span><span class="n">llm</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">max_steps</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">budget_s</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="n">task</span><span class="p">}]</span>
+    <span class="n">seen</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_steps</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">monotonic</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="n">budget_s</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">"status"</span><span class="p">:</span> <span class="s2">"timeout"</span><span class="p">,</span> <span class="s2">"history"</span><span class="p">:</span> <span class="n">history</span><span class="p">}</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">llm</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">TOOLS</span><span class="p">))</span>
+        <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">msg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"tool_call"</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">"status"</span><span class="p">:</span> <span class="s2">"done"</span><span class="p">,</span> <span class="s2">"answer"</span><span class="p">:</span> <span class="n">msg</span><span class="p">[</span><span class="s2">"content"</span><span class="p">]}</span>
+
+        <span class="n">name</span><span class="p">,</span> <span class="n">raw</span> <span class="o">=</span> <span class="n">msg</span><span class="p">[</span><span class="s2">"tool_call"</span><span class="p">][</span><span class="s2">"name"</span><span class="p">],</span> <span class="n">msg</span><span class="p">[</span><span class="s2">"tool_call"</span><span class="p">][</span><span class="s2">"args"</span><span class="p">]</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">raw</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>  <span class="c1"># same call twice = probably looping</span>
+            <span class="n">obs</span> <span class="o">=</span> <span class="s2">"You already called this with identical arguments. Use the earlier result or try something different."</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">TOOLS</span><span class="p">:</span>
+            <span class="n">obs</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Unknown tool '</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">'. Available: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">TOOLS</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">schema</span><span class="p">,</span> <span class="n">fn</span> <span class="o">=</span> <span class="n">TOOLS</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">obs</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">schema</span><span class="p">(</span><span class="o">**</span><span class="n">raw</span><span class="p">))</span>
+            <span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">obs</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Invalid arguments: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">errors</span><span class="p">()</span><span class="si">}</span><span class="s2">"</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>  <span class="c1"># tool failures are observations, not crashes</span>
+                <span class="n">obs</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Tool error: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span>
+        <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"tool"</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">obs</span><span class="p">)[:</span><span class="mi">4000</span><span class="p">]})</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"status"</span><span class="p">:</span> <span class="s2">"max_steps"</span><span class="p">,</span> <span class="s2">"history"</span><span class="p">:</span> <span class="n">history</span><span class="p">}</span>
+</code></pre></div>
+
+<p>Notice what the loop does <em>not</em> trust: the tool name, the arguments, the tool itself, the length of the output, or the model&rsquo;s sense of when it&rsquo;s finished.</p>
+<h2 id="3-detect-loops-cheaply">3. Detect loops cheaply<a class="headerlink" href="#3-detect-loops-cheaply" title="Permanent link">#</a></h2>
+<p>The duplicate-call check above catches a surprising fraction of runaway agents. It&rsquo;s crude — a model can loop with slightly different arguments — but crude and always-on beats clever and never-shipped. A next step is to track whether the agent&rsquo;s state is actually changing: new information retrieved, new files touched, new sub-goals completed.</p>
+<h2 id="4-keep-the-context-honest">4. Keep the context honest<a class="headerlink" href="#4-keep-the-context-honest" title="Permanent link">#</a></h2>
+<p>Long-running agents drown in their own transcripts. Truncate tool outputs (note the <code>[:4000]</code>), summarize old steps, and keep the original task pinned near the top. A lot of &ldquo;the agent forgot what it was doing&rdquo; bugs are really &ldquo;we buried the instruction under 30k tokens of JSON&rdquo;.</p>
+<h2 id="5-make-it-observable-before-you-make-it-smart">5. Make it observable before you make it smart<a class="headerlink" href="#5-make-it-observable-before-you-make-it-smart" title="Permanent link">#</a></h2>
+<p>Before tuning prompts, log every step: input, tool call, observation, latency, tokens. Then read the traces. Actually read them. In my experience, one afternoon of reading fifty failed traces teaches more than a week of tweaking prompts by vibes, because you start to see that failures cluster into maybe three or four categories.</p>
+<h2 id="6-evaluate-trajectories-not-just-answers">6. Evaluate trajectories, not just answers<a class="headerlink" href="#6-evaluate-trajectories-not-just-answers" title="Permanent link">#</a></h2>
+<p>A correct final answer reached through nine redundant tool calls is a latency and cost bug waiting to happen. Score the path too: number of steps, invalid calls, repeated calls. Those metrics are cheap to compute from the logs you already have from point 5.</p>
+<h2 id="the-meta-lesson">The meta-lesson<a class="headerlink" href="#the-meta-lesson" title="Permanent link">#</a></h2>
+<p>Agents look like an AI problem, but making them reliable is mostly a software engineering problem: input validation, timeouts, idempotency, observability, tests. The model is the most interesting component, and also the one you should trust least.</p>
+<p>None of this is glamorous. That&rsquo;s sort of the point.</p></div>
+      <div class="share"><span class="muted">Share:</span><a class="btn" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fmeotomo.com%2Fme%2Fblog%2Fllm-agents-that-dont-fall-over%2F&amp;text=Notes%20on%20building%20LLM%20agents%20that%20don%27t%20fall%20over" rel="noopener" target="_blank">X / Twitter</a><a class="btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmeotomo.com%2Fme%2Fblog%2Fllm-agents-that-dont-fall-over%2F" rel="noopener" target="_blank">LinkedIn</a><a class="btn" href="mailto:?subject=Notes%20on%20building%20LLM%20agents%20that%20don%27t%20fall%20over&amp;body=https%3A%2F%2Fmeotomo.com%2Fme%2Fblog%2Fllm-agents-that-dont-fall-over%2F">Email</a><button class="btn" type="button" data-copy="https://meotomo.com/me/blog/llm-agents-that-dont-fall-over/">Copy link</button></div>
+      <nav class="pager" aria-label="More posts"><a class="card prev" href="../stoicism-and-debugging/"><div class="label">← Older</div><strong>Stoicism and the art of debugging</strong></a><span></span></nav>
+    </div>
+    <aside class="toc" aria-label="Table of contents"><div class="label">On this page</div><ul><li><a href="#1-bound-everything">1. Bound everything</a></li><li><a href="#2-treat-tool-calls-as-untrusted-input">2. Treat tool calls as untrusted input</a></li><li><a href="#3-detect-loops-cheaply">3. Detect loops cheaply</a></li><li><a href="#4-keep-the-context-honest">4. Keep the context honest</a></li><li><a href="#5-make-it-observable-before-you-make-it-smart">5. Make it observable before you make it smart</a></li><li><a href="#6-evaluate-trajectories-not-just-answers">6. Evaluate trajectories, not just answers</a></li><li><a href="#the-meta-lesson">The meta-lesson</a></li></ul></aside>
+  </div>
+</article>
+</main>
+<footer>
+  <div class="container">
+    <span>&copy; 2026 Tran Duc Phu</span>
+    <span><a href="https://github.com/TranPhu1999">GitHub</a> · <a href="https://www.linkedin.com/in/tran-duc-phu-505841192/">LinkedIn</a> · <a href="../../blog/feed.xml">RSS</a></span>
+  </div>
+</footer>
+<script src="../../assets/main.js" defer></script>
+</body>
+</html>

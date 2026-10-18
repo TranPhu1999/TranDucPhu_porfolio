@@ -1,0 +1,7 @@
+posts/
+templates/
+build.py
+requirements.txt
+README.md
+.git/
+__pycache__/

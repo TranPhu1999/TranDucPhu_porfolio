@@ -23,5 +23,6 @@
   ],
   "framework": null,
   "buildCommand": "",
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "trailingSlash": true
 }

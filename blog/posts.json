@@ -1,0 +1,68 @@
+[
+  {
+    "slug": "llm-agents-that-dont-fall-over",
+    "title": "Notes on building LLM agents that don't fall over",
+    "date": "2026-10-16",
+    "date_human": "Oct 16, 2026",
+    "tags": [
+      "AI",
+      "Tech"
+    ],
+    "topics": [
+      "AI",
+      "Tech"
+    ],
+    "summary": "Agents fail in boring, predictable ways: unbounded loops, malformed tool calls, and silent drift. A few patterns that make them sturdier, with a minimal Python loop.",
+    "reading_time": 4
+  },
+  {
+    "slug": "stoicism-and-debugging",
+    "title": "Stoicism and the art of debugging",
+    "date": "2026-10-13",
+    "date_human": "Oct 13, 2026",
+    "tags": [
+      "Philosophy",
+      "Psychology",
+      "Tech"
+    ],
+    "topics": [
+      "Philosophy",
+      "Psychology",
+      "Tech"
+    ],
+    "summary": "The dichotomy of control, the view from above, and premeditatio malorum — three Stoic ideas that turned out to be excellent debugging tools.",
+    "reading_time": 4
+  },
+  {
+    "slug": "thinking-fast-and-slow-for-engineers",
+    "title": "Thinking, Fast and Slow, read by an engineer",
+    "date": "2026-10-10",
+    "date_human": "Oct 10, 2026",
+    "tags": [
+      "Books",
+      "Psychology"
+    ],
+    "topics": [
+      "Books",
+      "Psychology"
+    ],
+    "summary": "Kahneman's System 1 and System 2 map uncomfortably well onto how we build, evaluate and trust machine learning systems — and onto how I make decisions at work.",
+    "reading_time": 4
+  },
+  {
+    "slug": "why-im-starting-this-blog",
+    "title": "Why I'm starting this blog",
+    "date": "2026-10-05",
+    "date_human": "Oct 5, 2026",
+    "tags": [
+      "Life/Other",
+      "Tech"
+    ],
+    "topics": [
+      "Life/Other",
+      "Tech"
+    ],
+    "summary": "Writing is how I find out what I actually think. Here's what this blog is for, what I'll write about, and what I won't pretend to know.",
+    "reading_time": 3
+  }
+]
