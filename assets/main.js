@@ -33,6 +33,25 @@
     });
   }
 
+
+  // project filters
+  var pf = Array.prototype.slice.call(document.querySelectorAll('.pfilter'));
+  if (pf.length) {
+    var pcards = Array.prototype.slice.call(document.querySelectorAll('.pcard'));
+    pf.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var f = b.getAttribute('data-f');
+        pf.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        pcards.forEach(function (c) {
+          var show = f === 'all' || c.getAttribute('data-cat') === f;
+          c.hidden = !show;
+          c.classList.toggle('featured-off', !show);
+          if (show) c.classList.add('in');
+        });
+      });
+    });
+  }
+
   // reveal on scroll
   var els = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {

@@ -6,7 +6,7 @@
 <atom:link href="https://meotomo.com/me/blog/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Writing on AI, tech, books, philosophy and psychology.</description>
 <language>en</language>
-<lastBuildDate>Sun, 18 Oct 2026 04:56:16 +0000</lastBuildDate>
+<lastBuildDate>Sun, 18 Oct 2026 05:32:31 +0000</lastBuildDate>
 <item><title>Notes on building LLM agents that don&#x27;t fall over</title><link>https://meotomo.com/me/blog/llm-agents-that-dont-fall-over/</link><guid isPermaLink="true">https://meotomo.com/me/blog/llm-agents-that-dont-fall-over/</guid><pubDate>Fri, 16 Oct 2026 09:00:00 +0700</pubDate><category>AI</category><category>Tech</category><description>Agents fail in boring, predictable ways: unbounded loops, malformed tool calls, and silent drift. A few patterns that make them sturdier, with a minimal Python loop.</description><content:encoded><![CDATA[<p>Every LLM agent demo looks magical for the first five minutes. Then someone asks it a question slightly outside the happy path, and it calls the same search tool eleven times, invents a function argument, and confidently answers a question nobody asked.</p>
 <p>Most agent failures I&rsquo;ve seen are not exotic. They are the same handful of boring problems, and boring problems have boring solutions. Here are the ones I keep coming back to.</p>
 <h2 id="1-bound-everything">1. Bound everything<a class="headerlink" href="#1-bound-everything" title="Permanent link">#</a></h2>

@@ -75,34 +75,120 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Projects</span>
-      <h2>Selected open-source work</h2>
-      <p class="muted">Earlier projects on GitHub, from computer vision to reinforcement learning.</p>
+      <h2>Things I've built</h2>
+      <p class="muted">Research pipelines, small apps for real communities, and the classic ML projects I learned on.</p>
     </div>
-    <div class="grid grid-3">
-      <a class="card project reveal" href="https://github.com/TranPhu1999/YOLO_face_mask_detection">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="10" r="3"/><path d="M7 21v-1a5 5 0 0 1 10 0v1"/></svg></div>
-        <h3>YOLO Face Mask Detection</h3><p>Real-time object detection with YOLO to spot whether people are wearing face masks.</p>
-        <ul class="tags"><li class="tag">Computer Vision</li><li class="tag">YOLO</li></ul><div class="go">View on GitHub →</div></a>
-      <a class="card project reveal" href="https://github.com/TranPhu1999/Explore_Predict_Vietnam-weather">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.5 19H7a5 5 0 1 1 1-9.9A6 6 0 0 1 19.5 11 4 4 0 0 1 17.5 19z"/></svg></div>
-        <h3>Explore &amp; Predict Vietnam Weather</h3><p>Exploratory analysis and predictive modeling on Vietnamese weather data.</p>
-        <ul class="tags"><li class="tag">Data Science</li><li class="tag">EDA</li></ul><div class="go">View on GitHub →</div></a>
-      <a class="card project reveal" href="https://github.com/TranPhu1999/Sentiment_analysis">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <h3>Sentiment Analysis</h3><p>Classifying the sentiment of text with NLP techniques.</p>
-        <ul class="tags"><li class="tag">NLP</li><li class="tag">Classification</li></ul><div class="go">View on GitHub →</div></a>
-      <a class="card project reveal" href="https://github.com/TranPhu1999/Simple_recommendation_system">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg></div>
-        <h3>Simple Recommendation System</h3><p>A compact recommender illustrating collaborative and content-based approaches.</p>
-        <ul class="tags"><li class="tag">RecSys</li><li class="tag">ML</li></ul><div class="go">View on GitHub →</div></a>
-      <a class="card project reveal" href="https://github.com/TranPhu1999/Snake_reinforcement_learning">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 12h6a3 3 0 0 0 0-6H8M20 12h-6a3 3 0 0 0 0 6h4"/><circle cx="8" cy="6" r="1"/></svg></div>
-        <h3>Snake with Reinforcement Learning</h3><p>An agent that learns to play Snake through reinforcement learning.</p>
-        <ul class="tags"><li class="tag">RL</li><li class="tag">Games</li></ul><div class="go">View on GitHub →</div></a>
-      <a class="card project reveal" href="https://github.com/TranPhu1999">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg></div>
-        <h3>More on GitHub</h3><p>Browse all repositories, experiments and notebooks.</p>
-        <ul class="tags"><li class="tag">@TranPhu1999</li></ul><div class="go">Open profile →</div></a>
+    <div class="filters pfilters reveal" role="group" aria-label="Filter projects">
+      <button type="button" class="filter pfilter" data-f="all" aria-pressed="true">All</button>
+      <button type="button" class="filter pfilter" data-f="ai" aria-pressed="false">AI / Research</button>
+      <button type="button" class="filter pfilter" data-f="apps" aria-pressed="false">Apps</button>
+      <button type="button" class="filter pfilter" data-f="classic" aria-pressed="false">Classic ML</button>
+    </div>
+    <div class="pgrid">
+      <article class="card pcard reveal featured" data-cat="ai">
+        <div class="pcard-media"><img src="assets/proj-temporal.webp" alt="Diagram of a two-tier pipeline: an advertising video goes through audio extraction and optional Demucs stem separation, then Tier 1 content detection (AST) and Tier 2 structural detection (Librosa, Auditok, WhisperX), merged into a timeline of timestamped events" width="900" height="563" loading="lazy" decoding="async"></div>
+        <div class="pcard-body">
+          <span class="pcard-kicker">AI / Research</span>
+          <h3>The Temporal Architecture of Video Conversion</h3>
+          <p>Treats short-form advertising videos as sequences of timestamped events instead of static content. A two-tier pipeline asks “what sound is present?” (an AST classifier whose 527 AudioSet classes are mapped to marketing node types) and “what production decision was made?” (signal processing for drops, risers, silence gaps, tempo changes, speech and spoken keywords). Per-batch results are merged into one chronological event sequence per video for downstream analysis.</p>
+          <ul class="tags"><li class="tag">Python</li><li class="tag">AST</li><li class="tag">WhisperX</li><li class="tag">Librosa</li><li class="tag">Demucs</li><li class="tag">Pyannote</li></ul>
+          <div class="pcard-links"><span class="private">Research · private repository</span></div>
+        </div>
+      </article>
+      <article class="card pcard reveal" data-cat="ai">
+        <div class="pcard-media"><img src="assets/proj-text2video.webp" alt="Architecture diagram: frames are embedded and stored in Milvus; text queries are embedded and matched by vector similarity search to return the top 100 videos, all in Docker Compose" width="900" height="563" loading="lazy" decoding="async"></div>
+        <div class="pcard-body">
+          <span class="pcard-kicker">AI / Research</span>
+          <h3>Text-to-Video Retrieval · AI Challenge</h3>
+          <p>Team HCMUS-NLPS entry for a text-to-video retrieval challenge: type a sentence, get back the matching clips. Sampled frames are encoded with CLIP4Clip (CLIP ViT-B/32) into a Milvus vector index, text queries are embedded the same way and answered by similarity search, with a Gradio demo on MSR-VTT test videos.</p>
+          <ul class="tags"><li class="tag">CLIP4Clip</li><li class="tag">Milvus</li><li class="tag">Towhee</li><li class="tag">Gradio</li><li class="tag">Docker</li></ul>
+          <div class="pcard-links"><a href="https://github.com/TranPhu1999/HCMUS-NLPS-AIChallenge" rel="noopener">GitHub →</a></div>
+        </div>
+      </article>
+      <article class="card pcard reveal" data-cat="apps">
+        <div class="pcard-media"><img src="assets/proj-releaf.webp" alt="Three phone screens of the ReLeaf prototype: a species-rescue quiz, the forest collection book, and a list of real-world eco actions" width="900" height="563" loading="lazy" decoding="async"></div>
+        <div class="pcard-body">
+          <span class="pcard-kicker">Apps</span>
+          <h3>ReLeaf / Mầm Xanh</h3>
+          <p>Design brief and clickable UI prototype for an educational eco game: players learn waste sorting by answering questions to heal animals, collect species in a “Forest Book”, and log real good deeds (sorting, composting, cycling) for in-game power. Built to be paper-tested and play-tested before any production code.</p>
+          <ul class="tags"><li class="tag">Game design</li><li class="tag">UI/UX</li><li class="tag">Prototype</li><li class="tag">Vercel</li></ul>
+          <div class="pcard-links"><a href="https://app-phi-six-40.vercel.app" rel="noopener">Live prototype →</a></div>
+        </div>
+      </article>
+      <article class="card pcard reveal" data-cat="apps">
+        <div class="pcard-media"><img src="assets/proj-nha-nhieu-la.webp" alt="Three phone screens of the Nhà Nhiều Lá app with demo data: choose-your-name login, open-shift screen with low-stock alerts, and the inventory list with stock bars" width="900" height="563" loading="lazy" decoding="async"></div>
+        <div class="pcard-body">
+          <span class="pcard-kicker">Apps</span>
+          <h3>Nhà Nhiều Lá — shop &amp; library app</h3>
+          <p>A mobile web app for a small community shop and book corner: volunteers sign in with a PIN, open and close cash shifts, record sales and expenses, track stock with reorder suggestions, and lend books with overdue tracking. The data lives in a Google Sheet with formulas defined in code, so it runs free on Google Apps Script. Screenshots use the built-in demo data.</p>
+          <ul class="tags"><li class="tag">Google Apps Script</li><li class="tag">Google Sheets</li><li class="tag">JavaScript</li><li class="tag">Mobile web</li></ul>
+          <div class="pcard-links"><span class="private">Private repository</span></div>
+        </div>
+      </article>
+      <article class="card pcard reveal" data-cat="apps">
+        <div class="pcard-media"><img src="assets/proj-uoc-mo-xanh.webp" alt="Dashboard of the Ước Mơ Xanh teacher management system showing totals for teachers, classes, sessions and students (demo data)" width="900" height="563" loading="lazy" decoding="async"></div>
+        <div class="pcard-body">
+          <span class="pcard-kicker">Apps</span>
+          <h3>Ước Mơ Xanh — volunteer teacher management</h3>
+          <p>A management system for volunteer teachers running online classes in remote areas of Vietnam: teacher profiles, classes, session scheduling with meeting links, issue tracking, document sharing and leave requests. FastAPI and PostgreSQL behind a React + TypeScript front end, all containerised with Docker Compose.</p>
+          <ul class="tags"><li class="tag">FastAPI</li><li class="tag">PostgreSQL</li><li class="tag">React</li><li class="tag">TypeScript</li><li class="tag">Tailwind</li><li class="tag">Docker</li></ul>
+          <div class="pcard-links"><span class="private">Private repository</span></div>
+        </div>
+      </article>
+      <article class="card pcard reveal" data-cat="ai">
+        <div class="pcard-media"><img src="assets/proj-face-mask.webp" alt="Archival 1918 photo of a tram conductor and passengers with bounding boxes predicted by the model labelled Correct Mask" width="900" height="563" loading="lazy" decoding="async"></div>
+        <div class="pcard-body">
+          <span class="pcard-kicker">AI / Research</span>
+          <h3>YOLOv8 Face Mask Detection</h3>
+          <p>A YOLOv8 model fine-tuned to classify faces as wearing a mask correctly, incorrectly or not at all, served through a FastAPI web app where you upload an image and get the annotated result back. On the 40-image validation split the notebook reports 0.953 mAP@50. Ships with a Dockerfile and a GitHub Actions image build.</p>
+          <ul class="tags"><li class="tag">YOLOv8</li><li class="tag">PyTorch</li><li class="tag">FastAPI</li><li class="tag">Docker</li></ul>
+          <div class="pcard-links"><a href="https://github.com/TranPhu1999/YOLOv8-face-mask-detection" rel="noopener">GitHub →</a></div>
+        </div>
+      </article>
+      <article class="card pcard reveal" data-cat="classic">
+        <div class="pcard-media"><img src="assets/proj-snake.webp" alt="Left: the trained snake agent mid-game at score 70; right: bar chart of scores over 50 games with the mean marked" width="900" height="563" loading="lazy" decoding="async"></div>
+        <div class="pcard-body">
+          <span class="pcard-kicker">Classic ML &amp; algorithms</span>
+          <h3>Snake with Deep Q-Learning</h3>
+          <p>A Pygame Snake game and a DQN agent that learns it from scratch. The state is 11 booleans (danger ahead/left/right, current direction, food direction), a small PyTorch Q-network picks the move, and training mixes short-term updates with experience replay.</p>
+          <ul class="tags"><li class="tag">PyTorch</li><li class="tag">Reinforcement learning</li><li class="tag">Pygame</li></ul>
+          <div class="pcard-links"><a href="https://github.com/TranPhu1999/Snake_reinforcement_learning" rel="noopener">GitHub →</a></div>
+        </div>
+      </article>
+      <article class="card pcard reveal" data-cat="classic">
+        <div class="pcard-media"><img src="assets/proj-wordle.webp" alt="Wordle grid solved in four guesses — TARIE, TWEEN, TEETH, THEFT — with the remaining candidate count after each guess" width="900" height="563" loading="lazy" decoding="async"></div>
+        <div class="pcard-body">
+          <span class="pcard-kicker">Classic ML &amp; algorithms</span>
+          <h3>Wordle Solver</h3>
+          <p>An information-theory Wordle solver: each guess is the word that maximises expected entropy over the remaining candidates, checked against a Wordle API. Version 2 caches a pre-computed pattern matrix in NumPy, which in the notebook cuts one solve from 1 min 28 s to 4.27 s.</p>
+          <ul class="tags"><li class="tag">Python</li><li class="tag">NumPy</li><li class="tag">Information theory</li></ul>
+          <div class="pcard-links"><a href="https://github.com/TranPhu1999/Wordle_solver" rel="noopener">GitHub →</a></div>
+        </div>
+      </article>
+      <article class="card pcard reveal" data-cat="classic">
+        <div class="pcard-media"><img src="assets/proj-search.webp" alt="Four mazes comparing the paths found by DFS, BFS, greedy best-first search and A*, with explored cells and path cost" width="900" height="563" loading="lazy" decoding="async"></div>
+        <div class="pcard-body">
+          <span class="pcard-kicker">Classic ML &amp; algorithms</span>
+          <h3>Search Algorithms, Visualised</h3>
+          <p>Maze path-finding with DFS, BFS, greedy best-first and A*, plus a variant that detours for bonus cells, each animated step by step in Matplotlib so you can watch how much of the maze it explores before reaching the exit.</p>
+          <ul class="tags"><li class="tag">Python</li><li class="tag">Matplotlib</li><li class="tag">Search / A*</li></ul>
+          <div class="pcard-links"><a href="https://github.com/TranPhu1999/Search_algorithm_with_visuallization" rel="noopener">GitHub →</a></div>
+        </div>
+      </article>
+      <article class="card pcard more-card reveal" data-cat="classic">
+        <div class="pcard-body">
+          <span class="pcard-kicker">Earlier work</span>
+          <h3>More on GitHub</h3>
+          <p>Smaller learning projects from my ML coursework:</p>
+          <ul class="more-list">
+            <li><a href="https://github.com/TranPhu1999/Yolo3-face-mask-detection-from-scratch">YOLOv3 face-mask detection from scratch</a></li>
+            <li><a href="https://github.com/TranPhu1999/Sentiment_analysis">Sentiment analysis</a></li>
+            <li><a href="https://github.com/TranPhu1999/Simple_recommendation_system">Simple recommendation system</a></li>
+            <li><a href="https://github.com/TranPhu1999/Image_augmentations">Image augmentations</a></li>
+          </ul>
+          <div class="pcard-links"><a href="https://github.com/TranPhu1999" rel="noopener">All repositories →</a></div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
