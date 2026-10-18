@@ -17,6 +17,10 @@
       "destination": "/index.html"
     },
     {
+      "source": "/me/:path(.*)/",
+      "destination": "/:path/index.html"
+    },
+    {
       "source": "/me/:path*",
       "destination": "/:path*"
     }
