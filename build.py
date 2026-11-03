@@ -283,11 +283,38 @@ def build_feed(posts):
 def build_sitemap(posts):
     today = dt.date.today().isoformat()
     urls = [(SITE, today), (f"{SITE}blog/", posts[0]["date"] if posts else today)]
+    urls.append((f"{SITE}privacy/", today))
     urls += [(f"{SITE}blog/{p['slug']}/", p["date"]) for p in posts]
     body = "".join(f"<url><loc>{u}</loc><lastmod>{d}</lastmod></url>\n" for u, d in urls)
     (ROOT / "sitemap.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{body}</urlset>\n',
         encoding="utf-8")
+
+
+def build_privacy():
+    root = "../"
+    url = f"{SITE}privacy/"
+    body = """<section><div class="container narrow">
+  <h1>Privacy Policy</h1>
+  <div class="meta">Last updated: November 2, 2026</div>
+  <div class="prose">
+  <p>This policy covers the personal automation app "Hermes Personal Assistant", a private tool built and used only by its developer, Tran Duc Phu (Albert). It is not offered to the public.</p>
+  <h2>What the app accesses</h2>
+  <p>With the owner's explicit consent, the app uses Google APIs (Gmail, Google Calendar, Google Drive, Google Docs and Google Sheets) on the owner's own Google account, to organize email and files, read the calendar, and keep a personal ledger and journal.</p>
+  <h2>How data is used</h2>
+  <p>Data is used only to perform the tasks the owner requests. It is not sold, shared with or transferred to third parties, and not used for advertising. The app's use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+  <h2>Storage and retention</h2>
+  <p>Access tokens are stored on the owner's own computer and are not shared. Data stays in the owner's Google account and private storage.</p>
+  <h2>Revoking access</h2>
+  <p>The owner can revoke access at any time at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</p>
+  <h2>Contact</h2>
+  <p>Tran Duc Phu: <a href="mailto:tranducphu.dup@gmail.com">tranducphu.dup@gmail.com</a></p>
+  </div></div></section>"""
+    out = layout(title=f"Privacy Policy \u2014 {SITE_TITLE}", desc="Privacy policy for the Hermes Personal Assistant app.",
+                 root=root, canonical=url, body=body)
+    d = ROOT / "privacy"
+    d.mkdir(exist_ok=True)
+    (d / "index.html").write_text(out, encoding="utf-8")
 
 
 def main():
@@ -300,6 +327,7 @@ def main():
     build_blog_index(posts)
     build_home(posts)
     build_feed(posts)
+    build_privacy()
     build_sitemap(posts)
     print(f"Built {len(posts)} posts -> blog/, index.html, blog/feed.xml, sitemap.xml")
 
